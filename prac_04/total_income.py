@@ -14,5 +14,12 @@ def main():
 
     print_income_report(incomes)
 
+def print_income_report(incomes):
+    """Print the income report with cumulative totals."""
+    print("\nIncome Report\n-------------")
+    total = 0
+    for i, income in enumerate(incomes, start=1):
+        total += income
+        print(f"Month {i:2} - Income: ${income:10.2f} Total: ${total:10.2f}")
 
 main()
