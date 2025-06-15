@@ -29,4 +29,11 @@ def load_data():
     input_file.close()
     return name_list
 
+def display_data(data):
+    for detail in data:
+        subject = detail[0]
+        lecturer = detail[1]
+        total_students = detail[2]
+        print(f"{subject} is taught by {lecturer} and has {total_students} students")
+
 main()
