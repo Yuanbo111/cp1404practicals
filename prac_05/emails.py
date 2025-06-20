@@ -26,9 +26,10 @@ def main():
         print(f"{name} ({email})")
 
 def extract_name(email):
-    """Extract name part from email"""
-    name_part = email.split("@")[0].title()
-    return name_part
+    """Extract a readable name from the email address."""
+    name_part = email.split("@")[0]
+    cleaned_name = name_part.replace(".", " ").replace("_", " ")
+    return cleaned_name.title()
 
 
 main()
