@@ -17,3 +17,15 @@ def read_data(filename):
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         return [line.strip().split(",") for line in in_file.readlines()[1:]]
 
+def count_champions(data):
+    """Count how many times each champion has won."""
+    champion_to_wins = {}
+    for row in data:
+        champion = row[2]
+        champion_to_wins[champion] = champion_to_wins.get(champion, 0) + 1
+    return champion_to_wins
+
+def get_champion_countries(data):
+    """Return a sorted list of unique countries of the champions."""
+    countries = {row[1] for row in data}
+    return sorted(countries)
