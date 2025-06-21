@@ -29,3 +29,14 @@ def get_champion_countries(data):
     """Return a sorted list of unique countries of the champions."""
     countries = {row[1] for row in data}
     return sorted(countries)
+
+def display_results(champion_to_wins, countries):
+    """Display champions with their win counts and list of countries."""
+    print("Wimbledon Champions:")
+    max_name_length = max(len(name) for name in champion_to_wins)
+    for name, count in sorted(champion_to_wins.items()):
+        print(f"{name:{max_name_length}} : {count}")
+    print(f"\nThese {len(countries)} countries have won Wimbledon:")
+    print(", ".join(countries))
+
+main()
