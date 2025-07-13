@@ -122,3 +122,32 @@ def add_project():
     percent = input("Percent complete: ")
     return Project(name, start_date, priority, cost, percent)
 
+def update_project(projects):
+    """Let the user update the completion percentage and/or priority of a selected project."""
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    try:
+        choice = int(input("Project choice: "))
+        project = projects[choice]
+    except (ValueError, IndexError):
+        print("Invalid project choice.")
+        return
+
+    print(project)
+    completion_input = input("New Percentage: ")
+    if completion_input != "":
+        try:
+            project.completion_percentage = int(completion_input)
+        except ValueError:
+            print("Invalid completion percentage.")
+
+    priority_input = input("New Priority: ")
+    if priority_input != "":
+        try:
+            project.priority = int(priority_input)
+        except ValueError:
+            print("Invalid priority.")
+
+if __name__ == "__main__":
+    main()
