@@ -116,11 +116,40 @@ def add_project():
     """Prompt the user to input details for a new project and return a Project"""
     print("Let's add a new project")
     name = input("Name: ")
-    start_date = input("Start date (dd/mm/yyyy): ")
-    priority = input("Priority: ")
-    cost = input("Cost estimate: $")
-    percent = input("Percent complete: ")
-    return Project(name, start_date, priority, cost, percent)
+    start_date = get_valid_date("Start date (dd/mm/yyyy): ")
+    priority = get_valid_int("Priority: ")
+    estimate = get_valid_float("Cost estimate: $")
+    completion = get_valid_int("Percent complete: ")
+    return Project(name, start_date, priority, estimate, completion)
+
+
+def get_valid_date(prompt):
+    """Prompt the user for a valid date string in dd/mm/yyyy format"""
+    while True:
+        date_input = input(prompt)
+        try:
+            datetime.datetime.strptime(date_input, "%d/%m/%Y")
+            return date_input
+        except ValueError:
+            print("Invalid date format. Please use dd/mm/yyyy.")
+
+
+def get_valid_int(prompt):
+    """Prompt the user for a valid integer"""
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
+
+
+def get_valid_float(prompt):
+    """Prompt the user for a valid float"""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 def update_project(projects):
     """Let the user update the completion percentage and/or priority of a selected project."""
