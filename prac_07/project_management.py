@@ -53,3 +53,13 @@ def load_projects(filename):
                 project = Project(name, start_time, priority, estimate, completion)
                 projects.append(project)
     return projects
+
+def save_projects(filename, projects):
+    """Save the list of Project objects"""
+    with open(filename, "w") as out_file:
+        out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            out_file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
+                           f"{project.priority}\t{project.cost_estimate}\t"
+                           f"{project.completion_percentage}\n")
+
