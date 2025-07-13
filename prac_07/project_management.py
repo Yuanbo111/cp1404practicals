@@ -81,10 +81,10 @@ def display_projects(projects):
     for project in complete:
         print(f"{project}")
 
-def filter_projects_by_date(projects, date_string):
+def filter_projects_by_date(projects, date_str):
     """Filter and display projects that start after a given date, sorted by start date."""
     try:
-        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        filter_date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
     except ValueError:
         print("Invalid date format. Please use dd/mm/yyyy.")
         return
@@ -111,3 +111,14 @@ def filter_projects_by_date(projects, date_string):
     # Display the sorted projects
     for project in filtered:
         print(project)
+
+def add_project():
+    """Prompt the user to input details for a new project and return a Project"""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = input("Priority: ")
+    cost = input("Cost estimate: $")
+    percent = input("Percent complete: ")
+    return Project(name, start_date, priority, cost, percent)
+
