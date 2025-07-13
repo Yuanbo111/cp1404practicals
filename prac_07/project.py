@@ -19,3 +19,7 @@ class Project:
     def is_complete(self):
         """Check if the project is completed"""
         return self.completion_percentage == 100
+
+    def __lt__(self, other):
+        """Sort Project objects by priority"""
+        return self.priority < other.priority
