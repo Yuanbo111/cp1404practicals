@@ -80,3 +80,34 @@ def display_projects(projects):
     print("Completed projects:")
     for project in complete:
         print(f"{project}")
+
+def filter_projects_by_date(projects, date_string):
+    """Filter and display projects that start after a given date, sorted by start date."""
+    try:
+        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yyyy.")
+        return
+
+    # Filter projects starting after the given date
+    filtered = []
+    for project in projects:
+        if project.start_date > filter_date:
+            filtered.append(project)
+
+    # Sort using a helper function instead of lambda
+    def get_start_date(project):
+        return project.start_date
+
+    # Simple selection sort based on start_date (if sort key is restricted)
+    for i in range(len(filtered) - 1):
+        min_index = i
+        for j in range(i + 1, len(filtered)):
+            if get_start_date(filtered[j]) < get_start_date(filtered[min_index]):
+                min_index = j
+        if min_index != i:
+            filtered[i], filtered[min_index] = filtered[min_index], filtered[i]
+
+    # Display the sorted projects
+    for project in filtered:
+        print(project)
