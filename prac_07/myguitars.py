@@ -30,7 +30,7 @@ def display_guitars(guitars):
     for i, guitar in enumerate(guitars, 1):
         print(f"Guitar {i}: {guitar}")
 
-def add_new_guitars():
+def add_new_guitars(guitars):
     """Prompt user to enter new guitars and return them as a list."""
     print("\nEnter your new guitars (leave name blank to finish):")
     new_guitars = []
@@ -44,3 +44,11 @@ def add_new_guitars():
         name = input("Name: ")
     return new_guitars
 
+def save_guitars(filename, guitars):
+    """Save the list of guitars to a CSV file."""
+    with open(filename, "w") as out_file:
+        for guitar in guitars:
+            print(f"{guitar.name},{guitar.year},{guitar.cost}", file=out_file)
+
+if __name__ == "__main__":
+    main()
