@@ -15,3 +15,7 @@ class Project:
         return (f"{self.name}, start: {self.start_date.strftime('%d/%m/%Y')}, "
                 f"priority {self.priority}, estimate: ${self.cost_estimate:.2f}, "
                 f"completion: {self.completion_percentage}%")
+
+    def is_complete(self):
+        """Check if the project is completed"""
+        return self.completion_percentage == 100
