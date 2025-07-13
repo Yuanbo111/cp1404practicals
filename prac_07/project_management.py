@@ -41,7 +41,7 @@ def main():
                 save_projects(FILENAME, projects)
             print("Thank you for using custom-built project management software.")
 
-def load_project(filename):
+def load_projects(filename):
     """Load project data from the file"""
     projects = []
     with open(filename, "r") as in_file:
