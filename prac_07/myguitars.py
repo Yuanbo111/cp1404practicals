@@ -15,3 +15,13 @@ def main():
 
     save_guitars(FILENAME, guitars)
 
+def load_guitars(filename):
+    """Load guitars from a CSV file and return a list of Guitar objects."""
+    guitars = []
+    with open(filename, "r") as in_file:
+        for line in in_file:
+            name, year, cost = line.strip().split(',')
+            guitars.append(Guitar(name, int(year), float(cost)))
+    return guitars
+
+
