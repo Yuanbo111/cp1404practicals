@@ -40,3 +40,16 @@ def main():
             if save in ["yes", "y"]:
                 save_projects(FILENAME, projects)
             print("Thank you for using custom-built project management software.")
+
+def load_project(filename):
+    """Load project data from the file"""
+    projects = []
+    with open(filename, "r") as in_file:
+        next(in_file)  # Skip header
+        for line in in_file:
+            parts = line.strip().split("\t")
+            if len(parts) == 5:
+                name, start_time, priority, estimate, completion = parts
+                project = Project(name, start_time, priority, estimate, completion)
+                projects.append(project)
+    return projects
