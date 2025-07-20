@@ -25,6 +25,26 @@ class MilesConverterApp(App):
         except ValueError:
             self.output_km = "0.0"
 
+    def handle_up(self):
+        """Increase miles by 1 and update conversion."""
+        try:
+            miles = float(self.root.ids.input_miles.text)
+        except ValueError:
+            miles = 0
+        miles += 1
+        self.root.ids.input_miles.text = str(miles)
+        self.handle_convert()
+
+    def handle_down(self):
+        """Decrease miles by 1 and update conversion."""
+        try:
+            miles = float(self.root.ids.input_miles.text)
+        except ValueError:
+            miles = 0
+        miles -= 1
+        self.root.ids.input_miles.text = str(miles)
+        self.handle_convert()
+
 
 
 MilesConverterApp().run()
