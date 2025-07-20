@@ -9,6 +9,7 @@ BoxLayout:
             text: '0'
             multiline: False
             font_size: 48
+            on_text: app.handle_convert()
 
 
         BoxLayout:
@@ -17,16 +18,21 @@ BoxLayout:
 
             Button:
                 text: 'Up'
+                on_press: app.handle_up()
 
             Button:
                 text: 'Down'
+                on_press: app.handle_down()
 
-    Button:
-        text: 'Convert miles to km'
-        on_press: app.handle_convert()
+#    Button:
+#        text: 'Convert miles to km'
+#        on_press: app.handle_convert()
+
 
     Label:
         id: output_label
-        text: '0.0'
+        text: app.output_km
         font_size: 48
         color: (1, 1, 0, 1)
+
+
