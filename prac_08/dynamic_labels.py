@@ -22,7 +22,7 @@ class DynamicLabelsApp(App):
     def create_labels(self):
         """Dynamically create and add Label widgets to the GUI."""
         for name in self.names:
-            label = Label(text=name, font_size=24)
+            label = Label(text=name)
             self.root.ids.main.add_widget(label)
 
 
