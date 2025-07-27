@@ -64,10 +64,15 @@ def main():
     print("Taxis are now:")
     list_taxis(taxis)
 
-
 def display_menu():
     """Display the main menu of options for the taxi simulator."""
     print("q)uit, c)hoose taxi, d)rive")
+
+def list_taxis(taxis):
+    """Display the list of taxis with their index numbers."""
+    print("Taxis available:")
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
 
 if __name__ == "__main__":
     main()
