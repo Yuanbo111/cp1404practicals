@@ -49,7 +49,21 @@ def run_tests():
     car = Car(fuel=10)
     assert car.fuel == 10, "Fuel not set correctly with given value"
 
+def format_sentence(phrase):
+    """
+    Format a phrase to be a sentence: capitalize first letter, end with a period.
 
+    >>> format_sentence('hello')
+    'Hello.'
+    >>> format_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> format_sentence('this is great')
+    'This is great.'
+    """
+    phrase = phrase.strip()
+    if not phrase.endswith('.'):
+        phrase += '.'
+    return phrase[0].upper() + phrase[1:]
 
 run_tests()
 
