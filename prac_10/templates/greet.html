@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+    <h1>Greeting</h1>
+    <form method="post">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Greet Me">
+    </form>
+    {% if name %}
+        <h2>Hello, {{ name }}!</h2>
+    {% endif %}
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
